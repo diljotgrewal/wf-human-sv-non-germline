@@ -236,7 +236,7 @@ process getAllChromosomesBed {
     output:
         path "allChromosomes.bed", emit: all_chromosomes_bed
     """
-    cat ${reference}.fai | awk -F '\t' '{print $1\"\t0\t\"$2}' > allChromosomes.bed
+    python -c \"data=[v.split() for v in open('${reference}.fai', 'rt').readlines()];data=[v[0]+'\t0\t'+v[1] for v in data];open('allChromosomes.bed', 'wt').write('\n'.join(data))\"
     """
 }
 
