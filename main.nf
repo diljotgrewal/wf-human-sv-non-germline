@@ -83,6 +83,7 @@ process sniffles2 {
     """
     sniffles \
         --threads $task.cpus \
+	--non-germline \
         --sample-id $name \
         --output-rnames \
         --cluster-merge-pos $params.cluster_merge_pos \
